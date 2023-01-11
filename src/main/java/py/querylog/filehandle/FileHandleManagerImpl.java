@@ -14,11 +14,10 @@
 
 package py.querylog.filehandle;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class FileHandleManagerImpl implements FileHandleManager {
@@ -31,7 +30,7 @@ public class FileHandleManagerImpl implements FileHandleManager {
     this.stop = new AtomicBoolean(false);
   }
 
-  
+
   public static FileHandleManagerImpl getInstance() {
     if (singleInstance == null) {
       synchronized (FileHandleManagerImpl.class) {
@@ -55,7 +54,6 @@ public class FileHandleManagerImpl implements FileHandleManager {
   }
 
 
-
   @Override
   public void closeAllFile() {
     logger.warn("all files closed");
@@ -68,14 +66,13 @@ public class FileHandleManagerImpl implements FileHandleManager {
       logger.error("file handle manager is stopping now");
     }
 
-
-      try {
-        closeAllFile();
-      } catch (Exception e) {
-        logger.error("caught an exception", e);
-      }
+    try {
+      closeAllFile();
+    } catch (Exception e) {
+      logger.error("caught an exception", e);
     }
-
   }
+
+}
 
 
