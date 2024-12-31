@@ -1,1 +1,0 @@
-A collection of classes and methods that provide query log functions and helper functionalities for ZettaStor DBS.
